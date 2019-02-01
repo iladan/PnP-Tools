@@ -1902,6 +1902,9 @@ namespace SearchQueryTool
                     sqr.RefinementFilters = _searchQueryRequest.RefinementFilters + ",";
                 }
                 sqr.RefinementFilters += "WorkId:" + item.WorkId;
+                // some cases do not support Get - like when set personal context (JSON list of lists), 
+                // using POST always has no problem
+                sqr.HttpMethodType = HttpMethodType.Post;
 
                 try
                 {
